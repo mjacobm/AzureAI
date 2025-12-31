@@ -18,12 +18,17 @@ using static System.Environment;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Reflection.Metadata.BlobBuilder;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using Microsoft.Extensions.Configuration;
 
+var builder = new ConfigurationBuilder();
+IConfiguration configuration = builder.SetBasePath(Directory.GetCurrentDirectory())
+    .AddJsonFile("appsettings.json")
+    .Build();
 
-string endpoint = "https://mathewjmathew2025-9946-resource.openai.azure.com/";
-string deploymentName = "gpt-4.1";
-string searchEndpoint = "https://ai-search-url.search.windows.net";
-string searchIndex = "a102index";
+string endpoint = configuration.GetSection("endpoint").Value;
+string deploymentName = configuration.GetSection("deploymentName").Value;
+string searchEndpoint = configuration.GetSection("searchEndpoint").Value; 
+string searchIndex = configuration.GetSection("searchIndex").Value;
 
 string systemPrompt = """
 You are an AI assistant that helps users prepare for the AI-102 "Azure AI Engineer Associate" certification (formerly known as AI201).
