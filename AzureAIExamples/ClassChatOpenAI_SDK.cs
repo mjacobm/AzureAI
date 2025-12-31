@@ -54,24 +54,6 @@ namespace AzureAIExamples
                 new UserChatMessage("What other certification are you aware of? give me a list?"),
             };
 
-        
-            // Create chat completion options
-            //var options = new ChatCompletionOptions
-            //{
-            //    Temperature = (float)0.7,
-            //    MaxOutputTokenCount = 13107,
-
-            //    TopP = (float)0.95,
-            //    FrequencyPenalty = (float)0,
-            //    PresencePenalty = (float)0
-            //};
-
-            //options.AddDataSource(new AzureSearchChatDataSource()
-            //{
-            //    Endpoint = new Uri(searchEndpoint),
-            //    IndexName = searchIndex,
-            //    Authentication = DataSourceAuthentication.FromApiKey("lH0x6AJkhxOlOAnU2YHH0D28gh6TsA0UQ1475dZ83VAzSeDCVOK0")
-            //});
 
             ChatCompletionOptions options = new();
             options.AddDataSource(new AzureSearchChatDataSource()
